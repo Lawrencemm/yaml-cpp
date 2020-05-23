@@ -29,10 +29,10 @@ Node Load(std::istream& input) {
   return builder.Root();
 }
 
-Node LoadFile(const std::string& filename) {
-  std::ifstream fin(filename);
+Node LoadFile(const std::filesystem::path& path) {
+  std::ifstream fin(path);
   if (!fin) {
-    throw BadFile(filename);
+    throw BadFile(path);
   }
   return Load(fin);
 }
@@ -62,10 +62,10 @@ std::vector<Node> LoadAll(std::istream& input) {
   return docs;
 }
 
-std::vector<Node> LoadAllFromFile(const std::string& filename) {
-  std::ifstream fin(filename);
+std::vector<Node> LoadAllFromFile(const std::filesystem::path& path) {
+  std::ifstream fin(path);
   if (!fin) {
-    throw BadFile(filename);
+    throw BadFile(path);
   }
   return LoadAll(fin);
 }
